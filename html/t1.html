@@ -1,0 +1,87 @@
+<!DOCTYPE html><!--Documantary 선언-->
+<html lang="ko"><!--한글 기반-->
+<head>
+    <meta charset="UTF-8"><!--메타 정보는 검색엔진을 위함. utf8은 3바이트 다있어. utf16은 2바이트, 없는 게 많아. 대신 메모리가 절약돼. 자바가 사용한다.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--scale을 키우는 것보다. 바디에서 폰트사이즈를 정하고, rem으로 조절.-->
+    <meta property="og:title" content="페이지 제목"><!--SNS검색 최적화-->
+    <title>first html</title><!--검색 엔진에서 잡혀-->
+    <style>
+            header, nav, footer {
+                border: 1px solid green;
+                margin: 5px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h3{
+                font-size: 1.2rem;
+            }
+
+            main {
+                border: 1px solid red;
+            }
+            
+            .container {
+                border: 2px dotted black;
+                padding: 20px;
+                background-color: yellow;
+                width: 400px;
+            }
+
+            aside {
+                align-items: center;
+                border: 2px solid green;
+                margin-left: 30px;
+                margin-right: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                height: 300px;
+                display: flex; 
+
+                
+            }
+
+            figure {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            figure img {
+                height: 200px;
+                object-fit: cover;
+            }
+
+            footer { 
+                border: 2px solid green;
+                height: 30px;
+                text-align: center;
+                align-items: center;
+                margin: 5px;
+            }
+            
+    </style>
+</head>
+<body>
+   <header>header</header>
+<nav>nav</nav>
+<main style="border: 1px solid red; padding: 5px;  display: flex; justify-content: space-between;">
+  <div class="container">
+    <h1>main > container</h1>
+    <section>section</section>
+    <article>
+      <h3>article - title</h3>
+      <figure>
+        <img src="https://avatar.vercel.sh/s" alt="S" class="x" />
+        <img src="https://unsplash.com/photos/b51xWeb75R4/download?ixid=M3wxMjA3fDB8MXxhbGx8M3x8fHx8fHx8MTc2MTg3OTc1M3w&force=true"
+          alt="lion" width="150" height="200" style="border: 3px dotted red;">
+      </figure>
+    </article>
+  </div>
+  <aside style="align-items: center;">aside</aside>
+</main>
+<footer class="text-center"><b>&#169; 시니어코딩</b></footer>
+</body>
+</html>

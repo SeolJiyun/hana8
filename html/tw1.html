@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+      }
+
+      @layer base {
+        @apply border border-green-500
+      }
+    </style>
+  </head>
+  
+  <body class="bg-green-100">
+    <div>
+      <button class="border border-green-500 bg-green-300 px-2 rounded-md cursor-pointer hover:bg-green-400 hover:text-white">
+        Button
+      </button>
+      <button class="border border-green-500 btn group-hover:border-green-500">Button2</button>
+      <button class="border border-green-500">Button3</button>
+    </div>
+    <h1 class="text-3xl font-bold underline text-clifford">
+      Hello world!
+    </h1>
+    <div class="border">Div</div>
+
+    <div class="container">
+        <img src="https://unsplash.com/photos/b51xWeb75R4/download?ixid=M3wxMjA3fDB8MXxhbGx8M3x8fHx8fHx8MTc2MTg3OTc1M3w&force=true" alt="lion" style="width:50px; border: 1px solid #ccc; border-radius: 100%;">
+        <div>
+            <div>indiflex@gmail.com</div>
+            <small>description...111</small>
+            <small>description...222</small>
+        </div>
+    </div>
+    
+  </body>
+</html>
