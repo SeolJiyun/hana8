@@ -1,0 +1,8 @@
+{
+  "watch": ["."],
+  "ext": "js",
+  "ignore": ["node_modules"],
+  "exec": "node --trace-warnings=0 --no-warnings",
+  "restartable": "rs"
+}
+

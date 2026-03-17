@@ -1,0 +1,18 @@
+{
+  "name": "hana8",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "dev:watch": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "hanaro 8",
+  "repository": {
+    "type": "module",
+    "url": "(index.js)"
+  }
+}

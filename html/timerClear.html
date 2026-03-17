@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My timer</title>
+</head>
+<body>
+    <!-- 타이머 버튼 -->
+    <div id="timer">00:00.00</div>
+    <button id="btn"> START</button>
+    <button id="lbtn"> LAP</button>
+    <button id="rbtn"> RESET</button>
+
+    <!-- 랩 리스트 -->
+    <ol id="lapList"></ol>
+
+    <script>
+        let msec = 0;
+        let timerId = null;
+        const $btn =document.getElementById('btn');
+        const $rbtn =document.getElementById('rbtn');
+        const $lbtn =document.getElementById('lbtn');
+        const $timer = document.getElementById('timer');
+        const $lapList = document.getElementById('lapList');
+
+        function rendering() {
+            $timer.innerHTML = formatTime(++msec);
+            const left = 10;
+        }
+
+        // ▶️⏸️ 시작 종료 버튼
+        $btn.addEventListener('click', function() {
+            console.log(this.innerText);
+            if (['START', 'RESTART'].includes(this.innerText)){
+                this.innerText = 'STOP';
+                timerId = setInterval(()=> {
+                    $timer.innerHTML = formatTime(++msec);
+                }, 1);
+            }
+            else{
+                this.innerText = 'RESTART';
+                clearInterval(timerId);
+                timerId = null;
+
+            }
+        });
+        
+        // 랩버튼
+        $lbtn.addEventListener('click', function () {
+            // 타이머 안 돌고 있을 때는 랩 안 찍기
+            if (timerId === null) return;
+
+            const li = document.createElement('li');
+            const lapNo = $lapList.children.length + 1;
+
+            li.textContent = `Lap ${lapNo} - ${$timer.innerText}`;
+            $lapList.appendChild(li);
+        });
+
+
+        // ↪️리셋 버튼
+        $rbtn.addEventListener('click', function() {
+            if(this.innerText==='RESET'){
+                msec = 0;
+                $timer.innerHTML = formatTime(msec);
+                clearInterval(timerId);
+                timerId = null;
+                $btn.innerText = 'START';
+
+                // ⭐ 랩 리스트 비우기
+                $lapList.innerHTML = '';
+            }
+        });
+
+        function formatTime(ms) {
+            const m = Math.trunc(ms / (20000)).toString().padStart(2, '0');
+            const s = Math.trunc((ms % (20000)) / 300).toString().padStart(2, '0');
+            const mi   = Math.trunc((ms % 300)/5).toString().padStart(2, '0');
+
+            return `${m<10 ? '0':''}:${s}.${mi}`;
+        }
+        
+    </script>
+</body>
+</html>
