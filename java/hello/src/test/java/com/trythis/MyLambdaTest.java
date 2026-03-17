@@ -1,6 +1,8 @@
 package com.trythis;
 
 import static com.trythis.MyLambda.*;
+import static com.trythis.MyLambda.filter;
+import static com.trythis.MyLambda.map;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
