@@ -5,15 +5,9 @@ spring:
   config:
     import: classpath:security.yml
 
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hanarodb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: hanaro
-    password: "12345678"
-
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
@@ -22,10 +16,11 @@ spring:
       hibernate:
         format_sql: true
         time_zone: Asia/Seoul
+        dialect: org.hibernate.dialect.MySQLDialect
 
   sql:
     init:
-      mode: never
+      mode: always
 
   servlet:
     multipart:
@@ -34,7 +29,7 @@ spring:
       max-file-size: 2MB
 
 upload:
-  path: src/main/resources/static/upload
+  path: E:/workspace/hana8/hanaro/hanaro/src/main/resources/static/upload
 
 management:
   server:
@@ -42,20 +37,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
-        exclude: env,beans
+        include: health,metrics,env,beans
   endpoint:
     metrics:
       access: read_only
-    shutdown:
-      access: unrestricted
     health:
       show-details: always
 
 springdoc:
   swagger-ui:
     enabled: true
-    path: /swagger.html
+    path: /swagger-ui/index.html
   api-docs:
     enabled: true
-    path: /hanaro/api-docs
+    path: /v3/api-docs

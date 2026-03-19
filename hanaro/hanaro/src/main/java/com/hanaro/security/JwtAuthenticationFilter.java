@@ -25,12 +25,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	// JWT 검증 안 해도 되는 경로들
 	private static final String[] EXCLUDE_PATTERNS = {
-		"/api/auth/**",     // 로그인, 회원가입
-		"/api/public/**",   // 공개 API
-		"/swagger-ui/**",   // Swagger UI
+		"/api/auth/**",
+		"/api/public/**",
+		"/swagger-ui/**",
+		"/v3/api-docs/**",
 		"/hanaro/api-docs/**",
 		"/actuator/**",
-		"/favicon.ico"
+		"/favicon.ico",
+		"/webjars/**"
 	};
 
 	private final JwtUtil jwtUtil;

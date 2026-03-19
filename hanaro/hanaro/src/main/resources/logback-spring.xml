@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS_DIR" value="./logs"/>
+
+    <!-- 콘솔 출력 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>[%d{HH:mm:ss}] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 회원 가입/로그인 로그 → logs/user.log -->
+    <appender name="USER_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/user.log</file>
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] %-5level - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/user.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 상품 관리 로그 → logs/product.log -->
+    <appender name="PRODUCT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/product.log</file>
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] %-5level - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/product.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 상품 가입/해지 로그 → logs/service.log -->
+    <appender name="SERVICE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/service.log</file>
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] %-5level - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/service.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 로거 설정 -->
+    <!-- com.hanaro.service.MemberService → user.log -->
+    <logger name="com.hanaro.service.MemberService" level="INFO" additivity="false">
+        <appender-ref ref="USER_FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- com.hanaro.service.ProductService → product.log -->
+    <logger name="com.hanaro.service.ProductService" level="INFO" additivity="false">
+        <appender-ref ref="PRODUCT_FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- com.hanaro.service.AccountService → service.log -->
+    <logger name="com.hanaro.service.AccountService" level="INFO" additivity="false">
+        <appender-ref ref="SERVICE_FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

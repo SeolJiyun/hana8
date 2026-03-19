@@ -57,4 +57,10 @@ public class GlobalExceptionHandler {
 				"message", "서버 오류가 발생했습니다"
 			));
 	}
+
+	@ExceptionHandler(org.springframework.security.authorization.AuthorizationDeniedException.class)
+	public ResponseEntity<Map<String, Object>> handleAuthorizationDeniedException(Exception e) {
+		return ResponseEntity.status(HttpStatus.FORBIDDEN)
+			.body(Map.of("status", 403, "message", "접근 권한이 없습니다"));
+	}
 }
